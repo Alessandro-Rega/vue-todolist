@@ -20,20 +20,20 @@
         <h1 class="titolo">todolist</h1>
     </header>
     <hr>
-    <div class="container">
-        <div class="insert">
-            <input type="text" placeholder="Che cosa devi fare?">
-            <button>Aggiungi</button>
-        </div>
-        <div class="lista">
-            <ul>
-                <li>Dare da mangiare al cane <i class="fas fa-times"></i></li>
-                <li>Fare la pasta <i class="fas fa-times"></i></li>
-                <li>Andare a comprare il pane <i class="fas fa-times"></i></li>
-            </ul>
+    <div id="root">
+        <div class="container">
+            <div class="insert">
+                <input type="text" placeholder="Che cosa devi fare?" v-model="task" @keyup.enter="insertTask()">
+                <button @click="insertTask()">Aggiungi</button>
+            </div>
+            <div class="lista">
+                <ul v-if="todos.length > 0">
+                    <li v-for="(todo, i) in todos"><span :class="{done : todos[i].done}" @click="checkout(i)">{{todo.task}}</span><i class="fas fa-times" @click="removeTask(i)"></i></li>
+                </ul>
+                <h2 v-else>Non hai niente da fare</h2>
+            </div>
         </div>
     </div>
-
 
 
     <!-- scripts -->

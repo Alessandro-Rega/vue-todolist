@@ -72,3 +72,11 @@ ul li:last-child{
 i{
     cursor: pointer;
 }
+
+h2{
+    padding: 10px;
+}
+
+.done{
+    text-decoration: line-through;
+}
